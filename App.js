@@ -3,8 +3,10 @@ import {View, Text} from 'react-native';
 
 export default function App() {
   return (
-    <View>
-      <Text></Text>
-    </View>
+    <ImageBackground source={require('./src/img/background.png')}>
+      <View>
+        <Text>alsdfhlaksjhdf</Text>
+      </View>
+    </ImageBackground>
   );
 }
