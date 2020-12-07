@@ -5,7 +5,7 @@ export default function App() {
   return (
     <ImageBackground source={require('./src/img/background.png')}>
       <View>
-        <Text>alsdfhlaksjhdf</Text>
+        <Text>alsdfhlaksasasasjhdf</Text>
       </View>
     </ImageBackground>
   );
