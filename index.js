@@ -1,4 +1,5 @@
+import 'react-native-gesture-handler';
 import {AppRegistry} from 'react-native';
-import App from './App';
+import Router from './src/Router';
 
-AppRegistry.registerComponent('expense_trace', () => App);
+AppRegistry.registerComponent('expense_trace', () => Router);
