@@ -7,6 +7,7 @@ target 'expense_trace' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   target 'expense_traceTests' do
     inherit! :complete
