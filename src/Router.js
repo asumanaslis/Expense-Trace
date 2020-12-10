@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/Feather';
 
 
 import { SpendAdd, GroupAdd } from "./pages";
+import BottomNavigator from './components/BottomNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,6 +37,10 @@ const Router = () => {
       <Tab.Screen
         name="SpendAddPage"
         component={SpendAdd}
+      />
+      <Tab.Screen
+        name="BottomNavigator"
+        component={BottomNavigator}
       />
       <Tab.Screen
         name="GroupAddPage"
