@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   ImageBackground,
-  TouchableOpacity,
   SafeAreaView,
   StyleSheet,
+  Alert
 } from 'react-native';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
+import { login } from '../redux/Auth/actions';
+import { useDispatch, connect } from 'react-redux';
 
-const SignInScreen = () => {
+const SignInScreen = (props) => {
+  const dispatch = useDispatch();
+  const loginUser = async (email, password) => {
+    await dispatch(login(email, password));
+  }
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigation = useNavigation();
+  console.log("isAuth : ", props.isAuth);
   return (
     <SafeAreaView style={styles.safeAreaView}>
       <ImageBackground
@@ -23,8 +32,8 @@ const SignInScreen = () => {
         <View style={styles.formView}>
           <View style={styles.formContentContainer}>
             <Text style={styles.loginText}>Login</Text>
-            <Input label="Email" style={{ marginBottom: '4%' }} />
-            <Input label="Password" secureTextEntry={true} />
+            <Input label="Email" style={{ marginBottom: '4%' }} value={email} onChangeText={(i) => setEmail(i)} />
+            <Input label="Password" secureTextEntry={true} value={password} onChangeText={(pass) => setPassword(pass)} />
             <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
           </View>
         </View>
@@ -40,7 +49,22 @@ const SignInScreen = () => {
                 Register
               </Text>
             </Text>
-            <Button  buttonName="Login" onPress={() => navigation.navigate('Home')}/>
+            <Button buttonName="Login" onPress={async () => {
+              await loginUser(email, password);
+              console.log("-----------");
+              props.isAuth ? navigation.navigate('Home') : Alert.alert('Something went wrong with login');
+              /*
+              if (props.isAuth) {
+                navigation.navigate('Home')
+              }
+              else {
+                
+                Alert.alert('Something went wrong with login');
+                setEmail('');
+                setPassword('');
+              }
+ */
+            }} />
           </View>
         </View>
       </ImageBackground>
@@ -98,4 +122,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignInScreen;
+const mapStateToProps = ({ auth }) => {
+  const { isAuth } = auth;
+  return { isAuth };
+};
+
+export default connect(mapStateToProps, {})(SignInScreen);
