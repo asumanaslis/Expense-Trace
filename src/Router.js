@@ -3,52 +3,76 @@ import { View, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
+import Iconn from 'react-native-vector-icons/Ionicons';
 
 
 import { SpendAdd, GroupAdd } from "./pages";
-import BottomNavigator from './components/BottomNavigator';
+
+import { PayScreenComponenet } from "./components"
+
 
 const Tab = createBottomTabNavigator();
 
+const customTabBarStyle = {
+	activeTintColor: '#0091EA',
+	inactiveTintColor: 'rgb(47,82,224)',
+	style: {backgroundColor: 'white' },
+}
 
-const Router = () => {
+const Router = (props) => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-      
-            if (route.name === 'SpendAddPage') {
-              iconName = "user"
-            } else if (route.name === 'GroupAddPage') {
-              iconName = "users"
-            }
-
-            return <Icon name={iconName} size={25} color={color} />;
-          },
-        })
-        }
-        tabBarOptions={{
-          activeTintColor: "blue",
-          inactiveTintColor: "rgb(72,102,226)",
+    <Tab.Navigator
+    initialRouteName="SpendAdd"
+    activeColor="#fff"
+    tabBarOptions={customTabBarStyle}
+    shifting="false">
+    <Tab.Screen
+    name="Home"
+    options={{
+      tabBarLabel: '',
+      tabBarIcon: ({ color }) => (
+        <Icon name="user" color={color} size={26} />
+      )
+    }}
+    component={SpendAdd} />
+    <Tab.Screen
+    name="Add"
+    options={{
+      tabBarLabel: '',
+      tabBarIcon: ({ color }) => (
+        <View
+        style={{
+          position: 'absolute',
+          bottom: 0, // space from bottombar
+          height: 68,
+          width: 68,
+          borderRadius: 68,
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
-      >
-      <Tab.Screen
-        name="SpendAddPage"
-        component={SpendAdd}
-      />
-      <Tab.Screen
-        name="BottomNavigator"
-        component={BottomNavigator}
-      />
-      <Tab.Screen
-        name="GroupAddPage"
-        component={GroupAdd}
-      />
+        >
+        <Iconn name="add-circle" color="rgb(47,82,224)" size={68}/>
+        </View>
+      )
+    }}
+    component={PayScreenComponenet}/>
+    <Tab.Screen
+    name="Workout"
+    options={{
+      tabBarLabel: '',
+      tabBarIcon: ({ color }) => (
+        <Icon name="users" color={color} size={26} />
+      )
+    }}
+    component={GroupAdd} />
     </Tab.Navigator>
-  </NavigationContainer>
+    </NavigationContainer>
   )
 }
 
 export default Router
+
+
+
+
