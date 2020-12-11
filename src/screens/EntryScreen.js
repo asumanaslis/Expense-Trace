@@ -1,6 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, TouchableOpacity, StyleSheet, ImageBackground, View, Image } from 'react-native';
-import SignInScreen from './SignInScreen';
+import { SafeAreaView, Text, StyleSheet, ImageBackground, View, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Button from '../components/Button';
 

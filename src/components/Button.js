@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text, Dimensions, StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
+import actions from '../redux/Auth/actions';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
