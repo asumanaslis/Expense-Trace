@@ -1,15 +1,15 @@
 import React from 'react'
-import { Text, SafeAreaView, View } from "react-native";
-
+import { SafeAreaView, View, Text} from 'react-native'
 
 const SpendAdd = () => {
-    return (
-        <SafeAreaView>
-            <View>
-                <Text>Spend Add Page</Text>
-            </View>
-        </SafeAreaView>
-    )
+        return (
+            <SafeAreaView>
+                <View>
+                    <Text>SpendAdd Page</Text>
+                </View>
+            </SafeAreaView>
+        )
 }
 
-export { SpendAdd } 
+export  { SpendAdd }
+

@@ -1,1 +1,1 @@
-export * from "./PayScreenComponenet"
+export * from "./PayScreenComponent"

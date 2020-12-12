@@ -1,14 +1,14 @@
 import React from 'react'
 import { SafeAreaView, View, Text} from 'react-native'
 
-const GroupAdd = () => {
+const PayScreenComponent = () => {
         return (
             <SafeAreaView>
                 <View>
-                    <Text>GroupAdd Page</Text>
+                    <Text>PayScreenComponent Page</Text>
                 </View>
             </SafeAreaView>
         )
 }
 
-export  { GroupAdd }
+export  { PayScreenComponent }
