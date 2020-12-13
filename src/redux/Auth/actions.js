@@ -1,5 +1,12 @@
 import auth from '@react-native-firebase/auth';
-import { REGISTER_START, REGISTER_SUCCESS, LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED } from './types';
+import {
+    REGISTER_START,
+    REGISTER_SUCCESS,
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_FAILED,
+    REGISTER_FAILED
+} from './types';
 
 
 export const register = (email, password) => {
@@ -12,6 +19,7 @@ export const register = (email, password) => {
                 dispatch({ type: REGISTER_SUCCESS });
             })
             .catch(error => {
+                dispatch({ type: REGISTER_FAILED });
                 if (error.code === 'auth/email-already-in-use') {
                     console.log('That email is already in use');
                 }

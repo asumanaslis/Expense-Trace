@@ -1,4 +1,4 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED, REGISTER_START } from './types';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILED, REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILED } from './types';
 
 const INITIAL_STATE = {
   isAuth: false,
@@ -12,6 +12,18 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         isAuth: action.payload,
         loading: true,
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        isAuth: true,
+        loading: false
+      };
+    case REGISTER_FAILED:
+      return {
+        ...state,
+        isAuth: false,
+        loading: false
       };
     case LOGIN_START:
       return {
