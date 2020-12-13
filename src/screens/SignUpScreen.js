@@ -7,10 +7,10 @@ import { useNavigation } from '@react-navigation/native';
 import { register } from '../redux/Auth/actions';
 import { useDispatch } from 'react-redux';
 
-const SignUpScreen = () => {
+const SignUpScreen = (props) => {
   const dispatch = useDispatch();
-  const registerUser = (email, password) => {
-    dispatch(register(email, password));
+  const registerUser = async (email, password) => {
+    await dispatch(register(email, password));
   }
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,9 +42,12 @@ const SignUpScreen = () => {
                 Login
               </Text>
             </Text>
-            <Button buttonName="Register" onPress={() => {
-              registerUser(email, password);
-              navigation.navigate('Home')
+            <Button buttonName="Register" onPress={async () => {
+              await registerUser(email, password);
+              props.isAuth ? navigation.navigate('Home') : Alert.alert('Something went wrong with register');
+              setName('');
+              setEmail('');
+              setPassword('');
             }} />
           </View>
         </View>
