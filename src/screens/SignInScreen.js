@@ -51,20 +51,11 @@ const SignInScreen = (props) => {
             </Text>
             <Button buttonName="Login" onPress={async () => {
               await loginUser(email, password);
-              console.log("-----------");
               props.isAuth ? navigation.navigate('Home') : Alert.alert('Something went wrong with login');
-              /*
-              if (props.isAuth) {
-                navigation.navigate('Home')
-              }
-              else {
-                
-                Alert.alert('Something went wrong with login');
-                setEmail('');
-                setPassword('');
-              }
- */
-            }} />
+              setEmail('');
+              setPassword('');
+            }
+            } />
           </View>
         </View>
       </ImageBackground>
