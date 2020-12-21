@@ -1,14 +1,8 @@
 import React from 'react'
-import { SafeAreaView, View, Text} from 'react-native'
+import { Text } from "react-native"
 
 const PayScreenComponent = () => {
-        return (
-            <SafeAreaView>
-                <View>
-                    <Text>PayScreenComponent Page</Text>
-                </View>
-            </SafeAreaView>
-        )
+    return null
 }
 
-export  { PayScreenComponent }
+export  {PayScreenComponent}
